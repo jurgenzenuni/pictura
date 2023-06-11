@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 
-function Search() {
+function Search2() {
   const [query, setQuery] = useState("Nice Wallpapers");
   const [photos, setPhotos] = useState([]);
-  const [perPage, setPerpage] = useState(80);
+  const [perPage, setPerpage] = useState(40);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const gridRef = useRef(null);
   const loadMoreButtonRef = useRef(null);
+  const [hoveredImageId, setHoveredImageId] = useState(null);
 
   const getPhotos = async () => {
     setLoading(true);
@@ -49,8 +50,26 @@ function Search() {
     }
   };
 
+  const handleDownload = (photoId) => {
+    const photo = photos.find((item) => item.id === photoId);
+    if (photo) {
+      const link = document.createElement("a");
+      link.href = photo.src.original;
+      link.download = `${photoId}.jpg`;
+      link.click();
+    }
+  };
+
+  const handleImageHover = (photoId) => {
+    setHoveredImageId(photoId);
+  };
+
+  const handleImageLeave = () => {
+    setHoveredImageId(null);
+  };
+
   return (
-    <div>
+    <div className="container1">
       <input
         className="inputSearch"
         onKeyDown={onKeyDownHandler}
@@ -60,14 +79,23 @@ function Search() {
       />
       <div className="grid" ref={gridRef}>
         {photos.map((item, index) => (
-          <div className="grid-item" key={index}>
+          <div className="grid-item" key={index} onMouseEnter={() => handleImageHover(item.id)}
+          onMouseLeave={handleImageLeave}>
             <img
-              src={item.src.original}
+              src={item.src.large2x}
               alt={item.id}
               loading="lazy" // Enable lazy loading
               width="100%"
               height="100%"
             />
+            {hoveredImageId === item.id && (
+              <button
+                className="download-button"
+                onClick={() => handleDownload(item.id)}
+              >
+                Download
+              </button>
+            )}
           </div>
         ))}
         {loading && <p>Loading...</p>}
@@ -85,7 +113,7 @@ function Search() {
   );
 }
 
-export default Search;
+export default Search2;
 
 
 
