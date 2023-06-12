@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.849);
+  color: rgba(8, 8, 8, 0.849);
   font-family: 'Montserrat', sans-serif;
 }
 .App {
@@ -22,14 +22,18 @@
 }
 
 .inputSearch {
-  /* background-color: rgb(241, 241, 241); */
   outline: none;
   border: 1.5px solid rgb(190, 190, 190);
   border-radius: 5.5px;
   height: 55px;
   width: 100%;
   padding: 0px 25px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
+  margin-top: -2px;
+  padding-left: 45px;
+  background-color: #f1f1f1;
+  color: rgb(110, 110, 110);
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .about-link span:hover {
@@ -39,23 +43,26 @@
   font-size: 22px;
 }
 
-
-@media (min-width:600px) {
-  .grid{
-    columns: 1;
-    gap: 15px;
+@media (min-width: 300px) {
+  .grid {
+    columns: 2;
+    gap: 12px;
+  }
+  
+  .grid img {
+    max-width: 100%;
+    padding-top: 12px !important;
   }
 }
+
 @media (min-width:900px) {
   .grid{
-    columns: 2;
-    gap: 15px;
-  }
-}
-@media (min-width:1300px) {
-  .grid{
     columns: 3;
-    gap: 15px;
+    gap: 20px;
+  }
+
+  .grid img {
+    padding-top: 20px !important;
   }
 }
 
@@ -66,8 +73,10 @@
   padding-top: 15px;
   object-fit: cover;
 }
-@media(max-width:768px) {
-  .grid-item img{
+
+
+@media(min-width:768px) {
+  .grid-item img {
     flex-direction: column;
   }
 }
@@ -88,15 +97,16 @@
   display: block;
   margin: 20px auto;
   padding: 10px 20px;
-  background-color: rgb(26, 26, 26);
+  transition: background-color 0.3s ease;
+  background-color: #000000;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
 .btn-load-more:hover {
-  background-color: grey;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .grid-item {
@@ -107,24 +117,37 @@
   position: absolute;
   bottom: 5px;
   left: 5px;
-  border: none;
   padding: 5px 5px;
+  border: none;
   font-size: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   background-color: rgba(0, 0, 0, 0.5);
   color: rgb(231, 231, 231);
 }
-
 .download-button:hover {
   background-color: #000000cc;
 }
+@media (max-width: 720px) {
+  .download-button {
+    font-size: 8px;
+  }
+}
 
 .carousel .slide img {
-  max-height: 600px; /* Set the desired height */
-  width: auto; /* Let the width adjust automatically */
+  max-height: 450px; 
+  width: auto; 
   object-fit: cover;
+  filter: grayscale(5%) brightness(50%);
 }
+@media (max-width: 600px) {
+  .carousel .slide img {
+    min-height: 410px; 
+    width: auto; 
+    object-fit: cover;
+  }
+}
+
 
 .carousel-slide {
   position: relative;
@@ -148,38 +171,41 @@
   margin-bottom: 10px;
 }
 
+
 @media (max-width: 600px) {
-  /* Styles for screens smaller than or equal to 768px */
   .carousel-title {
-    font-size: 40px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    width: 330px;
+    text-align: left;
+    font-size: 30px;
   }
 }
 @media (min-width: 600px) {
-  /* Styles for screens smaller than or equal to 768px */
   .carousel-title {
-    font-size: 70px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    width: 700px;
+    text-align: left;
+    font-size: 35px;
   }
 }
 @media (max-width: 600px) {
-  /* Styles for screens smaller than or equal to 768px */
   .carousel-description {
-    font-size: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    margin-top: -2px;
+    width: 300px;
+    /* text-align: left; */
+    font-size: 12px;
   }
 }
 @media (min-width: 600px) {
-  /* Styles for screens smaller than or equal to 768px */
   .carousel-description {
-    font-size: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    width: 700px;
+    font-size: 31px;
   }
 }
 .carousel-description {
+  text-align: center;
+  margin: 0 auto;
   padding-top: 4px;
   color: #fff;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .image-resolution {
@@ -192,10 +218,34 @@
   color: rgb(231, 231, 231);
   font-size: 12px;
 }
+@media (max-width: 720px) {
+  .image-resolution {
+    font-size: 8px;
+  }
+}
 
+.sticky-search {
+  padding-top: 6px;
+  position: sticky;
+  top: 0;
+  background-color: #fff; 
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-
-
+.search-icon {
+  position: absolute;
+  padding: 10px;
+  left: 10px; 
+  top: 47%;
+  transform: translateY(-50%);
+  width: 25px; 
+  height: 25px; 
+  background-image: url('./components/Images/search-icon-transparent-images-vector-16.png'); 
+  background-size: cover;
+}
 
 
 

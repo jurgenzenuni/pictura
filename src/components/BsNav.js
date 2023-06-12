@@ -1,6 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from "react-bootstrap";
+import Search3 from "./Searchcaro";
 
 function NavBar() {
   return (
@@ -10,6 +11,7 @@ function NavBar() {
           {" "}
           <span> RETAKE </span>
         </i>
+
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggle">
         <i className="ri-menu-4-fill"></i>
@@ -20,7 +22,7 @@ function NavBar() {
             <i className="ri-user-fill"></i> <span> SIGN IN </span>
           </Nav.Link> */}
           <Nav.Link href="/about.html" className="about-link" style={{ marginLeft: '10px', marginRight: '10px', paddingLeft: '21px' }}>
-            <span> - ABOUT US </span>
+            <span> ABOUT </span>
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import magnifyingGlassIcon from './Images/search-icon-transparent-images-vector-16.png'; 
+import downloadIcon from './Images/download-icon-white-png-1.png';
 
 function Search3() {
-  const [query, setQuery] = useState("Free wallpapers");
+  const [query, setQuery] = useState("Free Wallpapers");
   const [photos, setPhotos] = useState([]);
   const [perPage, setPerpage] = useState(40);
   const [loading, setLoading] = useState(false);
@@ -23,11 +25,16 @@ function Search3() {
         },
       }
     );
-
+  
     const data = await response.json();
     const newPhotos = data.photos;
-
-    setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
+  
+    if (page === 1) {
+      setPhotos(newPhotos); 
+    } else {
+      setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
+    }
+    
     setLoading(false);
   };
 
@@ -77,26 +84,30 @@ function Search3() {
     setHoveredImageResolution("");
   };
   
-
-  
-
   return (
     <div>
+      <div className="sticky-search">
+      <span className="search-icon" style={{ backgroundImage: `url(${magnifyingGlassIcon})` }}></span>
       <input
         className="inputSearch"
         onKeyDown={onKeyDownHandler}
         placeholder="Search"
         onChange={(e) => setQuery(e.target.value)}
         value={query}
-      />
+        />
+    </div>
       <div className="grid" ref={gridRef}>
         {photos.map((item, index) => (
-          <div className="grid-item" key={index} onMouseEnter={() => handleImageHover(item.id)}
-          onMouseLeave={handleImageLeave}>
+          <div
+            className="grid-item"
+            key={index}
+            onMouseEnter={() => handleImageHover(item.id)}
+            onMouseLeave={handleImageLeave}
+          >
             <img
               src={item.src.large2x}
               alt={item.id}
-              loading="lazy" // Enable lazy loading
+              loading="lazy" 
               width="100%"
               height="100%"
             />
@@ -108,7 +119,9 @@ function Search3() {
                 >
                   Download
                 </button>
-                <p className="image-resolution">{hoveredImageResolution}</p>
+                <p className="image-resolution">
+                  {hoveredImageResolution}
+                </p>
               </div>
             )}
           </div>
@@ -127,5 +140,6 @@ function Search3() {
     </div>
   );
 }
+
 
 export default Search3;

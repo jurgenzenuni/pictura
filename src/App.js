@@ -7,47 +7,48 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import carouselImage1 from "./components/Images/nature-landscape-mountains-4k_1551644850.jpg"
 import carouselImage2 from './components/Images/nature-hd-sd-3840x2160.jpg'
-import carouselImage3 from './components/Images/5003-lake-mountains-trees-rain-nature-4k.jpg'
-
+import carouselImage3 from './components/Images/andrew-neel-jtsW--Z6bFw-unsplash.jpg'
 
 
 function App() {
   return (
     <div className="App">
       <div>
-        <NavBar />
+        <NavBar 
+        />
       </div>
       <div className="carousel-container">
         <Carousel
           autoPlay
+          interval={10000}
           infiniteLoop
           showStatus={false}
           showThumbs={false}
           dynamicHeight={false}
           className="carousel-full-width"
-          transitionTime={500}
+          transitionTime={550}
         >
           <div className="carousel-slide">
             <img src={carouselImage3} alt="Carousel Image 1" />
             <div className="carousel-content">
-              <h1 className="carousel-title">Free Wallpapers</h1>
-              {/* <p className="carousel-description">Free to download and use for your mobile and desktop screens.</p> */}
+              <h1 className="carousel-title"> The best free stock photos, royalty free images & videos shared by creators.</h1>
+              <p className="carousel-description">  Powered By Pexels</p>
             </div>
           </div>
           <div className="carousel-slide">
             <img src={carouselImage2} alt="Carousel Image 2" />
             <div className="carousel-content">
-              <h1 className="carousel-title">Free Wallpapers</h1>
-              {/* <p className="carousel-description">Free to download and use for your mobile and desktop screens.</p> */}
+              <h1 className="carousel-title">Refresh your screen with vibrant and inspiring visuals.</h1>
+              <p className="carousel-description">Powered By Pexels</p>
             </div>
           </div>
-          <div className="carousel-slide">
+          {/* <div className="carousel-slide">
             <img src={carouselImage1} alt="Carousel Image 3" />
             <div className="carousel-content">
-              <h1 className="carousel-title">Free Wallpapers</h1>
-              {/* <p className="carousel-description">Free to download and use for your mobile and desktop screens.</p> */}
+              <h1 className="carousel-title"></h1>
+              <p className="carousel-description">Powered By Pexels</p>
             </div>
-          </div>
+          </div> */}
         </Carousel>
       </div>
       <div className="container1">
