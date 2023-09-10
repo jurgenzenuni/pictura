@@ -6,7 +6,7 @@ import downloadIcon from './Images/download-icon-white-png-1.png';
 function Search3() {
   const [query, setQuery] = useState("Free Wallpapers");
   const [photos, setPhotos] = useState([]);
-  const [perPage, setPerpage] = useState(40);
+  const [perPage, setPerpage] = useState(80);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const gridRef = useRef(null);
@@ -28,18 +28,26 @@ function Search3() {
   
     const data = await response.json();
     const newPhotos = data.photos;
-  
+      
     if (page === 1) {
-      setPhotos(newPhotos); 
+      setPhotos(newPhotos);
     } else {
-      setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
+      setPhotos(newPhotos);
     }
-    
     setLoading(false);
   };
+  
+    // setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
+    // setLoading(false);
+  // };
 
+  // const loadMorePhotos = () => {
+  //   setPage((prevPage) => prevPage + 1);
+  // };
   const loadMorePhotos = () => {
     setPage((prevPage) => prevPage + 1);
+    // Clear the existing photos when loading more.
+    setPhotos([]);
   };
 
   useEffect(() => {
@@ -93,7 +101,7 @@ function Search3() {
         onKeyDown={onKeyDownHandler}
         placeholder="Search"
         onChange={(e) => setQuery(e.target.value)}
-        value={query}
+        value={query === "Free Wallpapers" ? "" : query}
         />
     </div>
       <div className="grid" ref={gridRef}>
@@ -134,7 +142,7 @@ function Search3() {
           onClick={loadMorePhotos}
           ref={loadMoreButtonRef}
         >
-          Load More
+          Refresh
         </button>
       )}
     </div>

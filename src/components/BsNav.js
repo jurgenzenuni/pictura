@@ -21,6 +21,9 @@ function NavBar() {
           {/* <Nav.Link className="navlink3" href="#user" >
             <i className="ri-user-fill"></i> <span> SIGN IN </span>
           </Nav.Link> */}
+          {/* <Nav.Link href="/login.html">
+            <span>Login</span>
+          </Nav.Link> */}
           <Nav.Link href="/about.html" className="about-link" style={{ marginLeft: '10px', marginRight: '10px', paddingLeft: '21px' }}>
             <span> ABOUT </span>
           </Nav.Link>

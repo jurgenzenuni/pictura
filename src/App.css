@@ -45,6 +45,18 @@
 
 @media (min-width: 300px) {
   .grid {
+    columns: 1;
+    gap: 12px;
+  }
+  
+  .grid img {
+    max-width: 100%;
+    padding-top: 12px !important;
+  }
+}
+
+@media (min-width: 600px) {
+  .grid {
     columns: 2;
     gap: 12px;
   }
