@@ -9,7 +9,7 @@ function NavBar() {
       <Navbar.Brand href="#home" className="navlink2" style={{ paddingLeft: '7px' }}>
         <i className="ri-contrast-drop-line">
           {" "}
-          <span> RETAKE </span>
+          <span> PICTURA </span>
         </i>
 
       </Navbar.Brand>
